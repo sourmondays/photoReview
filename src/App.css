@@ -1,43 +1,428 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar start */
+.navbar-text {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: lightseagreen;
+  text-transform: uppercase;
+  padding: 6rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar-container {
+  margin-bottom: 2.6rem;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+nav {
+  padding: 0.8rem 2rem;
+}
+
+
+.logo {
+  float: left;
+  margin-left: 1rem;
+  margin-top: .5rem;
+}
+
+.logo a {
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: #dd4f36;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+nav ul {
+  float: right;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li:not(:first-child) {
+  margin-left: 15px;
+}
+
+nav ul li:last-child {
+  margin-right: 24px;
+}
+
+nav ul li a {
+  display: inline-block;
+  outline: none;
+  color: black;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin-top: 3.5px;
+}
+
+/* Media queries for navbar */
+
+@media screen and (max-width: 864px) {
+  .logo {
+        padding: 0;
+        padding-top: 1rem
+  }
+
+  .logo a {
+        font-size: 1.5rem;
+  }
+
+  .nav-btn {
+    padding-top: 1rem;
+  }
+
+  .nav-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: #fff;
+        opacity: 0;
+  }
+
+  .nav-wrapper ul {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+  }
+
+  .nav-wrapper ul li {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: right;
+        margin-bottom: 10px;
+        text-align: center;
+  }
+
+  .nav-wrapper ul li:not(:first-child) {
+        margin-left: 0;
+  }
+
+  .nav-wrapper ul li a {
+        letter-spacing: 1.2px;
+        transition: all 0.2s ease;
+  }
+
+  .nav-btn {
+        position: fixed;
+        right: 3rem;
+        display: block;
+        cursor: pointer;
+        z-index: 9998;
+  }
+
+  .nav-btn i {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: black;
+  }
+
+  .nav-btn i:nth-child(1) {
+        margin-top: 18px;
+  }
+
+  .nav-btn i:nth-child(2) {
+        margin-top: 6px;
+  }
+
+  nav ul li:not(:first-child) {
+    margin-left: 48px;
+  }
+
+  .login-container {
+    margin-top: 2rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@media screen and (max-width: 375px){
+    .nav-wrapper {
+        width: 100%;
+  }
+}
+
+#nav:checked + .nav-btn i {
+  background: #000;
+  transition: transform 0.2s ease;
+}
+
+#nav:checked + .nav-btn i:nth-child(1) {
+  transform: translateY(3px) rotate(-135deg);
+}
+
+#nav:checked + .nav-btn i:nth-child(2) {
+  transform: translateY(-5px) rotate(135deg);
+}
+
+#nav:checked ~ .nav-wrapper {
+  z-index: 9990;
+  opacity: 1;
+}
+
+#nav:checked ~ .nav-wrapper ul li a {
+  opacity: 1;
+  transform: translateX(0);
+  font-size: 6vmin;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Navbar end  */
+
+.button-navbar {
+  background-color: #dd4f36;
+  border: none;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.Hello {
+  padding: 7.5px 16px;
   text-align: center;
-  color: lightblue;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Home */
+.home-create {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #dd4f36;
+  font-size: 5rem;
 }
+
+.home-share {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.home-buttons-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.button-home {
+  background-color: #000000;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  color: white;
+  padding: 7.5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 300;
+}
+
+.home-container {
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  color: white;
+  /* position: fixed; */
+  overflow: hidden;
+}
+
+.home-container img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.centered-home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* End of home page */
+
+/* Sign up page */
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=passwordConform] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Set a style for buttons login and signup */
+.signup {
+  background-color: #dd4f36;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.signup:hover {
+  opacity: 0.8;
+}
+
+.container-signup-login {
+  padding: 30px;
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(255, 255, 255);
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+}
+
+.signup-login{
+  text-align: center;
+  margin-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signup-login a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #dd4f36;
+}
+
+.forgot-login {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.forgot-login a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #242424;
+  font-size: 0.9rem;
+}
+
+.error {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.header-desc {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 0.5rem;
+}
+
+.welcome-login-signup {
+  text-align: center; 
+  font-family: 'Roboto', sans-serif;
+  color: #0f0f0f;
+  font-weight: 500;
+}
+
+.welcome-text {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.header-signup {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+/* Sign up page end */
+
+/* Login page */
+
+.login-container {
+  height: 100vh;
+  position: relative; 
+  overflow: hidden;
+}
+
+.login-container img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+/* Login page end */
+
+/* 404 page */ 
+
+.notfound-container {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.four0four {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 24rem;
+}
+
+/* 404 page end */
+
+/* Media queries */
+
+@media screen and (max-width: 992px) { 
+  .four0four {
+    font-size: 15rem;
+  }
+
+  .container-signup-login {
+    width: 50%;
+  }
+
+  .navbar-container {
+    margin-bottom: 4.5rem;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .four0four {
+    font-size: 10rem;
+  }
+
+  .container-signup-login {
+    width: 75%;
+  }
+  
+}
+
+

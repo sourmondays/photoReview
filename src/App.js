@@ -1,11 +1,33 @@
 import "./App.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import NavBar from "./components/Navbar";
+import Home from "./components/Home";
+import Login from "./components/Auth/Login";
+import SignUp from "./components/Auth/SignUp";
+import Albums from "./components/Albums/Albums";
+import NotFound from "./components/NotFound";
+import Reset from "./components/Auth/ResetPassword";
+import AuthContextProvider from "./contexts/AuthContext";
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
 
 function App() {
   return (
     <>
-      <h1 className="Hello">
-        Hello, welcome to my photo review webb-application!
-      </h1>
+      <BrowserRouter>
+        <AuthContextProvider>
+          <div className="App">
+            <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/resetpassword" component={Reset} />
+              <Route path="/signup" component={SignUp} />
+              <ProtectedRoute exact path="/albums" component={Albums} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+        </AuthContextProvider>
+      </BrowserRouter>
     </>
   );
 }
