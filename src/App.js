@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
 import Albums from "./components/Albums/Albums";
+import Review from "./components/PhotoReview/Review";
+import Upload from "./components/Upload/UploadImages";
 import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
@@ -21,9 +23,11 @@ function App() {
             <ScrollToTop />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
               <Route path="/resetpassword" component={Reset} />
-              <Route path="/signup" component={SignUp} />
+              <Route path="/review" component={Review} />
+              <ProtectedRoute exact path="/upload" component={Upload} />
               <ProtectedRoute exact path="/albums" component={Albums} />
               <Route path="*" component={NotFound} />
             </Switch>

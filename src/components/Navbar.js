@@ -17,6 +17,11 @@ const NavBar = () => {
     window.location.reload();
   };
 
+  const refreshPageUpload = () => {
+    history.push("/upload");
+    window.location.reload();
+  };
+
   const refreshPageLogin = () => {
     history.push("/login");
     window.location.reload();
@@ -42,8 +47,12 @@ const NavBar = () => {
             <div className="nav-wrapper">
               <ul>
                 <li className="nav-item">
+                  <Link onClick={refreshPageUpload}>Upload</Link>
+                </li>
+                <li className="nav-item">
                   <Link onClick={refreshPageAlbums}>Albums</Link>
                 </li>
+
                 {currentUser ? (
                   <li className="nav-item">
                     <Link className="button-navbar" onClick={handleLogout}>
