@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/Navbar";
+import ScrollToTop from "./ScrollToTop";
 import Home from "./components/Home";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
@@ -17,6 +18,7 @@ function App() {
         <AuthContextProvider>
           <div className="App">
             <NavBar />
+            <ScrollToTop />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
