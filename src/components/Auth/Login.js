@@ -50,7 +50,7 @@ const Login = () => {
 
             {error && <p className="error">{error}</p>}
 
-            <button className="signup" type="submit">
+            <button disabled={loading} className="signup" type="submit">
               Login
             </button>
 
