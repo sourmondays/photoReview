@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import ProgressBar from "react-bootstrap/esm/ProgressBar";
-import DisplayImages from "../DisplayImages";
 import useUploadImage from "../../hooks/useUploadImage";
 
-const MultiImageDropZone = () => {
+const ImageDropZone = ({ albumId }) => {
   const [uploadFile, setUploadFile] = useState(null);
   const [message, setMessage] = useState(null);
-  const { uploadProgress, error, isSuccess } = useUploadImage(uploadFile);
+  const { uploadProgress, error, isSuccess } = useUploadImage(
+    uploadFile,
+    albumId
+  );
 
   useEffect(() => {
     if (error) {
@@ -87,10 +89,8 @@ const MultiImageDropZone = () => {
           <p variant={message.error ? "warning" : "success"}>{message.text}</p>
         )}
       </div>
-
-      <DisplayImages />
     </>
   );
 };
 
-export default MultiImageDropZone;
+export default ImageDropZone;

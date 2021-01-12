@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { db, storage, timestamp } from "../firebase/firebaseConfiq";
+import { useAuth } from "../contexts/AuthContext";
 
-const useUploadImage = (file) => {
+const useUploadImage = (file, albumId) => {
   const [uploadProgress, setUploadProgress] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     if (!file) {
@@ -13,50 +15,42 @@ const useUploadImage = (file) => {
       setUploadedImage(null);
       setError(null);
       setIsSuccess(false);
+
       return;
     }
-
     setError(null);
     setIsSuccess(false);
-
-    const fileRef = storage.ref(`images/${file.name}`);
-
+    const fileRef = storage.ref(`images/${currentUser.uid}/${file.name}`);
     const uploadTask = fileRef.put(file);
 
-    uploadTask.on("state_changed", (taskSnapshot) => {
+    uploadTask.on("state_changed", (snap) => {
       setUploadProgress(
-        Math.round(
-          (taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) * 100
-        )
+        Math.round((snap.bytesTransferred / snap.totalBytes) * 100)
       );
     });
-
     uploadTask
-      .then((snapshot) => {
-        snapshot.ref.getDownloadURL().then((url) => {
-          const image = {
-            name: file.name,
-            path: snapshot.ref.fullPath,
-            size: file.size,
-            type: file.type,
-            createdAt: (file.createdAt = timestamp()),
-            url,
-          };
+      .then(async (snapshot) => {
+        const url = await snapshot.ref.getDownloadURL();
 
-          db.collection("images")
-            .add(image)
-            .then((doc) => {
-              fileRef.updateMetadata({
-                customMetadata: { firestoreId: doc.id },
-              });
+        const image = {
+          name: file.name,
+          path: snapshot.ref.fullPath,
+          size: file.size,
+          type: file.type,
+          createdAt: (file.createdAt = timestamp()),
+          url,
+        };
 
-              setIsSuccess(true);
-              setUploadProgress(null);
+        if (albumId) {
+          image.album = db.collection("albums").doc(albumId);
+        }
 
-              setUploadedImage(image);
-              setIsSuccess(true);
-            });
-        });
+        await db.collection("images").add(image);
+
+        setIsSuccess(true);
+        setUploadProgress(null);
+        setUploadedImage(image);
+        setIsSuccess(true);
       })
       .catch((error) => {
         console.error("Error when file uploaded to DB!", error);
@@ -65,7 +59,7 @@ const useUploadImage = (file) => {
           msg: `Wasn't able to upload image to DB (${error.code})`,
         });
       });
-  }, [file]);
+  }, [file, albumId, currentUser]);
 
   return { uploadProgress, uploadedImage, error, isSuccess };
 };

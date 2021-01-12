@@ -9,7 +9,6 @@ import Albums from "./components/Albums/Albums";
 import Album from "./components/Albums/Album";
 import Create from "./components/Albums/Create";
 import Review from "./components/PhotoReview/Review";
-import Upload from "./components/Upload/MultiImageDropZone";
 import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
@@ -29,10 +28,10 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/resetpassword" component={Reset} />
               <Route path="/review" component={Review} />
-              <ProtectedRoute exact path="/upload" component={Upload} />
               <ProtectedRoute exact path="/albums" component={Albums} />
-              <ProtectedRoute exact path="/album/:albumId" component={Album} />
               <ProtectedRoute exact path="/albums/create" component={Create} />
+              <ProtectedRoute exact path="/album/:albumId" component={Album} />
+
               <Route path="*" component={NotFound} />
             </Switch>
           </div>
