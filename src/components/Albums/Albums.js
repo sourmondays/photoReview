@@ -1,34 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { db } from "../../firebase/firebaseConfiq";
 import One from "../../assets/1.jpg";
+import useAlbums from "../../hooks/useAlbums";
 
 const Album = () => {
   const { currentUser } = useAuth();
-  const [albums, setAlbums] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("albums")
-      .where("owner", "==", currentUser.uid)
-      .orderBy("createdAt", "desc")
-      .onSnapshot((snapshot) => {
-        setLoading(true);
-        const albumsDb = [];
-
-        snapshot.forEach((album) => {
-          albumsDb.push({
-            id: album.id,
-            ...album.data(),
-          });
-        });
-        setAlbums(albumsDb);
-        setLoading(false);
-      });
-    return unsubscribe;
-  }, [currentUser]);
+  const { albums, loading } = useAlbums();
 
   return (
     <>
