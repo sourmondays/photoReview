@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
+
 
 * {
   margin: 0;
@@ -189,17 +191,21 @@ nav ul li a {
 /* Navbar end  */
 
 .button-navbar {
-  background-color: #dd4f36;
   border: none;
-  color: white;
-  padding: 7.5px 16px;
+  padding: 7px 6px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 5px 2px;
   cursor: pointer;
-  border-radius: 25px;
+  border: 1px solid #181818;
+  border-radius: 2px;
+}
+
+.button-navbar:hover {
+  background-color: #181818;
+  color: whitesmoke;
 }
 
 /* Home */
@@ -489,13 +495,13 @@ input[type=text], input[type=password], input[type=passwordConform] {
 /* Drop zone for images */
 
 #dropzone {
-  margin-top: 4rem;
+  margin-top: 1rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   background-color: rgb(219, 219, 219);
   padding: 2rem;
-  margin-right: 8rem;
-  margin-left: 8rem;
+  max-width: 80%;
+  margin: auto; 
   text-align: center;
   border-radius: 4px;
   color: rgb(19, 19, 19);
@@ -511,15 +517,62 @@ input[type=text], input[type=password], input[type=passwordConform] {
   margin-right: 2rem;
 }
 .user-text {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+}
+
+.album-header {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+.center-things {
+  text-align: center;
+}
+
+.buttons-allaround {
+  border: none;
+  padding: 7px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+  border: 1px solid #181818;
+  border-radius: 2px;
+  color: black;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  font-size: 0.8rem;
+}
+
+.buttons-allaround:hover {
+  background-color: #181818;
+  color: whitesmoke;
+}
+
+.album-title {
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
   text-align: center;
-  color: white;
-  padding: 0.5rem;
-  background-color: #dd4f36;
-  border-radius: 10px;
-  /* border: 2px solid #1d1d1d; */
+}
+
+.buttons-row {
+    max-width:100%;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.inner {
+    display: inline-block;
+}
+
+.url-share {
+  font-family: "Nunito", sans-serif;
+  border-style: none;
+  margin-bottom: 1rem;
 }
 /* End of albums page */
 

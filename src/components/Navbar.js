@@ -48,7 +48,7 @@ const NavBar = () => {
                 {currentUser ? (
                   <li className="nav-item">
                     <Link className="button-navbar" onClick={handleLogout}>
-                      Log Out
+                      Log out
                     </Link>
                   </li>
                 ) : (
@@ -58,7 +58,7 @@ const NavBar = () => {
                       onClick={refreshPageLogin}
                       to="/albums"
                     >
-                      Log in
+                      Login
                     </Link>
                   </li>
                 )}

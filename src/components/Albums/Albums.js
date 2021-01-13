@@ -4,19 +4,21 @@ import { useAuth } from "../../contexts/AuthContext";
 import One from "../../assets/1.jpg";
 import useAlbums from "../../hooks/useAlbums";
 
-const Album = () => {
+const Albums = () => {
   const { currentUser } = useAuth();
-  const { albums, loading } = useAlbums();
+  const { albums, loading } = useAlbums(currentUser.uid);
 
   return (
     <>
       <div className="container-user-text">
         <p className="user-text">Welcome {currentUser.email}</p>
       </div>
-      <h1>Albums</h1>
+      <h1 className="album-header">Your albums</h1>
 
-      <div>
-        <Link to="/albums/create">Create a new album</Link>
+      <div className="center-things">
+        <Link className="buttons-allaround" to="/albums/create">
+          Create album
+        </Link>
       </div>
 
       {loading && <p>Loading...</p>}
@@ -40,4 +42,4 @@ const Album = () => {
   );
 };
 
-export default Album;
+export default Albums;

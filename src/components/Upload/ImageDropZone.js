@@ -34,7 +34,9 @@ const ImageDropZone = ({ albumId }) => {
       return;
     }
 
-    setUploadFile(acceptedFiles[0]);
+    acceptedFiles.forEach((file) => {
+      setUploadFile(file);
+    });
   }, []);
 
   const {

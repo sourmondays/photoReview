@@ -3,7 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { db, timestamp } from "../../firebase/firebaseConfiq";
 import { useHistory } from "react-router-dom";
 
-const Create = (file) => {
+const Create = () => {
   const { currentUser } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

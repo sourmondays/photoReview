@@ -8,6 +8,7 @@ import SignUp from "./components/Auth/SignUp";
 import Albums from "./components/Albums/Albums";
 import Album from "./components/Albums/Album";
 import Create from "./components/Albums/Create";
+import EditAlbumName from "./components/Albums/EditAlbumName";
 import Review from "./components/PhotoReview/Review";
 import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
@@ -27,11 +28,15 @@ function App() {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
               <Route path="/resetpassword" component={Reset} />
-              <Route path="/review" component={Review} />
+              <Route path="/review/:albumId" component={Review} />
               <ProtectedRoute exact path="/albums" component={Albums} />
               <ProtectedRoute exact path="/albums/create" component={Create} />
               <ProtectedRoute exact path="/album/:albumId" component={Album} />
-
+              <ProtectedRoute
+                exact
+                path="/album/editalbum/:albumId"
+                component={EditAlbumName}
+              />
               <Route path="*" component={NotFound} />
             </Switch>
           </div>
