@@ -64,7 +64,7 @@ const Album = () => {
           <p className="url-share">
             {reviewLink}{" "}
             <button onClick={setCopied} className="buttons-allaround">
-              {isCopied ? "Copied" : "Share album"}
+              {isCopied ? "Copied" : "Copy link"}
             </button>
           </p>
         )}
