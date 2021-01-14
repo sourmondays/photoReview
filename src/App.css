@@ -299,6 +299,28 @@ input[type=text], input[type=password], input[type=passwordConform] {
   opacity: 0.8;
 }
 
+.create-album-button {
+  border: none;
+  padding: 7px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+  border: 1px solid #181818;
+  border-radius: 2px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  width: 100%;
+}
+
+.create-album-button:hover {
+  background-color: #181818;
+  color: whitesmoke;
+}
+
 .container-signup-login {
   padding: 30px;
   width: 30%;
@@ -605,6 +627,15 @@ input[type=text], input[type=password], input[type=passwordConform] {
   margin-bottom: 1rem;
 }
 /* End of albums page */
+
+/* Spec album page */
+.box-rename {
+ max-width: 20%;
+ margin: auto;
+ margin-top: 1rem;
+ margin-bottom: 1rem;
+}
+/*End spec album page */
 
 /* Create a new album */
 

@@ -112,13 +112,11 @@ const Album = () => {
 
       {changeTitle && (
         <form onSubmit={handleNewAlbumFromImages}>
-          <div className="style-this-box">
-            <label htmlFor="album">
-              <p className="header-desc">Create a new album</p>
-            </label>
+          <div className="box-rename">
             <input
               type="text"
               name="album"
+              placeholder="Album name"
               onChange={handleAlbumName}
               value={title}
               required
@@ -133,7 +131,7 @@ const Album = () => {
 
             <button
               disabled={loading}
-              className="buttons-allaround"
+              className="create-album-button"
               type="submit"
             >
               Create new album
