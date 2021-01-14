@@ -412,12 +412,12 @@ input[type=text], input[type=password], input[type=passwordConform] {
 
 /* Image grid */
 
-.img-grid {
+/* .img-grid {
   margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; 
-  /* grid-gap: 10px;
-  max-width: 100%; */
+  grid-gap: 10px;
+  max-width: 100%;
 }
 
 .img-wrap {
@@ -426,6 +426,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
   padding: 50% 0;
   position: relative;
 }
+
 .img-wrap img {
   width: 100%;
   height: 100%;
@@ -433,6 +434,34 @@ input[type=text], input[type=password], input[type=passwordConform] {
   position: absolute;
   top: 0;
   left: 0;
+} */
+
+.grid-images {
+  margin: 0 auto;
+  display: grid;
+  /* max-width: 1000px; */
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  
+  /* grid-template-rows: minmax(100px, auto) minmax(100px, auto); */
+  gap: 10px;
+  max-width: 95%;
+  margin-bottom: 2rem;
+}
+
+.grid-images p {
+  font-family: "work sans", Arial, Helvetica, sans-serif;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.grid-images img {
+  max-width: 100%;
+  display: flex;
+  object-fit: cover;
+  height: 350px;
+  width: 350px;
 }
 
 /* Image grid end */ 
@@ -556,6 +585,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
   font-family: "Nunito", sans-serif;
   font-weight: 500;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .buttons-row {
@@ -595,8 +625,17 @@ input[type=text], input[type=password], input[type=passwordConform] {
     margin-bottom: 4.5rem;
   }
 
-  .img-grid {
+  /* .img-grid {
     grid-template-columns: 1fr 1fr 1fr;
+  } */
+
+  .grid-images {
+    grid-template-columns: 1fr 1fr 1fr; 
+  }
+
+  .grid-images img {
+    height: 250px;
+    width: 250px;
   }
 
   .container-user-text{
@@ -614,6 +653,17 @@ input[type=text], input[type=password], input[type=passwordConform] {
   .container-signup-login {
     width: 75%;
   }
+
+  .grid-images {
+    grid-template-columns: 1fr; 
+  }
+
+  .grid-images img {
+    height: 350px;
+    width: 350px;
+  }
+
+
 }
 
 

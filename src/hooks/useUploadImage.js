@@ -18,8 +18,10 @@ const useUploadImage = (file, albumId) => {
 
       return;
     }
+
     setError(null);
     setIsSuccess(false);
+
     const fileRef = storage.ref(`images/${currentUser.uid}/${file.name}`);
     const uploadTask = fileRef.put(file);
 
@@ -28,6 +30,7 @@ const useUploadImage = (file, albumId) => {
         Math.round((snap.bytesTransferred / snap.totalBytes) * 100)
       );
     });
+
     uploadTask
       .then(async (snapshot) => {
         const url = await snapshot.ref.getDownloadURL();
@@ -42,7 +45,7 @@ const useUploadImage = (file, albumId) => {
         };
 
         if (albumId) {
-          image.album = db.collection("albums").doc(albumId);
+          image.album = [db.collection("albums").doc(albumId)];
         }
 
         await db.collection("images").add(image);

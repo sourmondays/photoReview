@@ -23,6 +23,7 @@ const Create = () => {
 
     setError(false);
     setLoading(true);
+
     const createdAt = timestamp();
 
     try {
