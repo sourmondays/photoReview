@@ -14,7 +14,7 @@ import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
-// import ReviewedAlbums from "./components/PhotoReview/ReviewedAlbums";
+import ThankYou from "./components/PhotoReview/ThankYou";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
               <Route path="/resetpassword" component={Reset} />
+              <Route path="/thankyou" component={ThankYou} />
               <Route path="/review/:albumId" component={Review} />
               <ProtectedRoute exact path="/albums" component={Albums} />
               <ProtectedRoute exact path="/albums/create" component={Create} />

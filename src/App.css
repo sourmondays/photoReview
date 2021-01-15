@@ -422,6 +422,17 @@ input[type=text], input[type=password], input[type=passwordConform] {
   font-size: 24rem;
 }
 
+.thankyou {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 4rem;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
 /* 404 page end */
 
 .progress-bar{
