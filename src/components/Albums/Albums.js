@@ -24,16 +24,15 @@ const Albums = () => {
       {loading && <p>Loading...</p>}
 
       {!loading && (
-        <div className="img-grid-albums">
+        <div className="grid-images">
           {albums.map((album) => (
-            <div className="img-wrap-albums" key={album.id}>
+            <div key={album.id}>
               <Link to={`album/${album.id}`}>
                 <img src={One} alt="Uploaded" />
-
-                <div className="centered">
-                  <h1>{album.title}</h1>
-                </div>
               </Link>
+              <label className="container-checkbox-albums">
+                <p className="album-title-header">{album.title}</p>
+              </label>
             </div>
           ))}
         </div>

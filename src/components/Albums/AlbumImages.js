@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
-const AlbumImages = ({ images, handleImagesArray }) => {
+const AlbumImages = ({ images, handleImagesArray, updateLikedImages }) => {
   const { currentUser } = useAuth();
 
   return (
@@ -12,13 +12,29 @@ const AlbumImages = ({ images, handleImagesArray }) => {
             <div key={image.id}>
               <img src={image.url} alt="Uploaded" />
               {currentUser ? (
-                <input
-                  type="checkbox"
-                  id={image.id}
-                  onChange={handleImagesArray}
-                />
+                <label className="container-checkbox">
+                  <input
+                    type="checkbox"
+                    id={image.id}
+                    onChange={handleImagesArray}
+                  />
+                  <div className="checkmark"></div>
+                </label>
               ) : (
-                <p>💛 🖤</p>
+                <div className="likes">
+                  <button
+                    className="iLikeThis"
+                    onClick={() => updateLikedImages(image, true)}
+                  >
+                    💛
+                  </button>
+                  <button
+                    className="iDislikeThis"
+                    onClick={() => updateLikedImages(image, false)}
+                  >
+                    🖤
+                  </button>
+                </div>
               )}
             </div>
           ))}

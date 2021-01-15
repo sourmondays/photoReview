@@ -14,7 +14,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(emailRef.current.value);
 
     if (passwordRef.current.value !== passwordConfrimRef.current.value) {
       return setError("The password dosn't match");

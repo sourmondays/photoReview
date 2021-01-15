@@ -14,7 +14,7 @@ import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
-import ReviewedAlbums from "./components/PhotoReview/ReviewedAlbums";
+// import ReviewedAlbums from "./components/PhotoReview/ReviewedAlbums";
 
 function App() {
   return (
@@ -37,11 +37,6 @@ function App() {
                 exact
                 path="/album/editalbum/:albumId"
                 component={EditAlbumName}
-              />
-              <ProtectedRoute
-                exact
-                path="/reviewedalbums"
-                component={ReviewedAlbums}
               />
               <Route path="*" component={NotFound} />
             </Switch>

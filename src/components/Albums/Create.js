@@ -37,8 +37,6 @@ const Create = () => {
       setError(e.message);
       setLoading(false);
     }
-
-    console.log(`Want to create a album with title "${title}"`);
   };
 
   return (

@@ -17,11 +17,6 @@ const NavBar = () => {
     window.location.reload();
   };
 
-  const refreshReviewedAlbums = () => {
-    history.push("/reviewedalbums");
-    window.location.reload();
-  };
-
   const refreshPageLogin = () => {
     history.push("/login");
     window.location.reload();
@@ -48,10 +43,6 @@ const NavBar = () => {
               <ul>
                 <li className="nav-item">
                   <Link onClick={refreshPageAlbums}>Albums</Link>
-                </li>
-
-                <li className="nav-item">
-                  <Link onClick={refreshReviewedAlbums}>Reviewed</Link>
                 </li>
 
                 {currentUser ? (

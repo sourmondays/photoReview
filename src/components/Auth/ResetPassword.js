@@ -11,7 +11,6 @@ const ForgotPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(emailRef.current.value);
 
     setError(null);
 
