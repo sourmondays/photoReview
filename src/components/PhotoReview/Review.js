@@ -48,17 +48,21 @@ const Review = () => {
 
   const handleReview = async () => {
     const date = new Date();
-    const title = `${album.title} | ${date.toISOString().substring(0, 10)}`;
+    const title = `${album.title} | Reviewed: ${date
+      .toISOString()
+      .substring(0, 10)}`;
 
     setError(false);
     const createdAt = timestamp();
 
     try {
-      const docRef = await db.collection("albums").add({
+      const docRef = await db.collection("reviewed").add({
         title,
         owner: album.owner,
         createdAt: createdAt,
+        cover: album.cover,
       });
+
       await likedImage.forEach((image) => {
         db.collection("images")
           .doc(image.id)
@@ -74,6 +78,25 @@ const Review = () => {
     }
   };
 
+  const hearts = (id, liked) => {
+    let div = document.getElementById(id);
+    if (liked === true) {
+      div
+        .getElementsByClassName("iLikeThis")[0]
+        .classList.add("iLikeThis-active");
+      div
+        .getElementsByClassName("iDislikeThis")[0]
+        .classList.remove("iDislikeThis-active");
+    } else if (liked === false) {
+      div
+        .getElementsByClassName("iDislikeThis")[0]
+        .classList.add("iDislikeThis-active");
+      div
+        .getElementsByClassName("iLikeThis")[0]
+        .classList.remove("iLikeThis-active");
+    }
+  };
+
   const updateLikedImages = (image, liked) => {
     let newImagesArray = reviewImage.map((img) => {
       if (img.id === image.id) {
@@ -86,6 +109,7 @@ const Review = () => {
       }
     });
     setReviewImage(newImagesArray);
+    hearts(image.id, liked);
   };
 
   if (loading) {

@@ -10,11 +10,14 @@ import Album from "./components/Albums/Album";
 import Create from "./components/Albums/Create";
 import EditAlbumName from "./components/Albums/EditAlbumName";
 import Review from "./components/PhotoReview/Review";
+import Reviewed from "./components/PhotoReview/Reviewed";
+import ReviewedAlbum from "./components/Albums/ReviewedAlbum";
 import NotFound from "./components/NotFound";
 import Reset from "./components/Auth/ResetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import ThankYou from "./components/PhotoReview/ThankYou";
+import ShowReviewed from "./components/PhotoReview/ShowReviewed";
 
 function App() {
   return (
@@ -31,7 +34,14 @@ function App() {
               <Route path="/resetpassword" component={Reset} />
               <Route path="/thankyou" component={ThankYou} />
               <Route path="/review/:albumId" component={Review} />
+              <Route path="/show/reviewed/:albumId" component={ShowReviewed} />
               <ProtectedRoute exact path="/albums" component={Albums} />
+              <ProtectedRoute exact path="/reviewed" component={Reviewed} />
+              <ProtectedRoute
+                exact
+                path="/reviewed/:albumId"
+                component={ReviewedAlbum}
+              />
               <ProtectedRoute exact path="/albums/create" component={Create} />
               <ProtectedRoute exact path="/album/:albumId" component={Album} />
               <ProtectedRoute

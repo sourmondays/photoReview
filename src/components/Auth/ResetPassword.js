@@ -39,7 +39,7 @@ const ForgotPassword = () => {
             {error && <p className="error">{error}</p>}
             {message && <p className="error">{message}</p>}
 
-            <button disabled={loading} className="signup" type="submit">
+            <button disabled={loading} className="buttons-long" type="submit">
               Reset password
             </button>
           </div>

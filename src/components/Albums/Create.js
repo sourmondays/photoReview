@@ -21,6 +21,10 @@ const Create = () => {
       return;
     }
 
+    if (title.length > 50) {
+      return;
+    }
+
     setError(false);
     setLoading(true);
 
@@ -33,8 +37,8 @@ const Create = () => {
         owner: currentUser.uid,
       });
       history.push(`/album/${docReference.id}`);
-    } catch (e) {
-      setError(e.message);
+    } catch (error) {
+      setError(error.message);
       setLoading(false);
     }
   };
@@ -42,7 +46,6 @@ const Create = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="create-container">
-        {/* <img src={One} alt="" /> */}
         <div className="container-signup-login">
           <label htmlFor="album">
             <p className="header-desc">Album name</p>
@@ -62,7 +65,13 @@ const Create = () => {
             </p>
           )}
 
-          <button disabled={loading} className="signup" type="submit">
+          {title && title.length > 50 && (
+            <p className="error">
+              Please enter a title that are max 50 characters long.
+            </p>
+          )}
+
+          <button disabled={loading} className="buttons-long" type="submit">
             Create album
           </button>
         </div>

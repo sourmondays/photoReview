@@ -50,6 +50,10 @@ const useUploadImage = (file, albumId) => {
 
         await db.collection("images").add(image);
 
+        await db.collection("albums").doc(albumId).update({
+          cover: image.url,
+        });
+
         setIsSuccess(true);
         setUploadProgress(null);
         setUploadedImage(image);

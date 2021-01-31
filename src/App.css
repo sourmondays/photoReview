@@ -280,22 +280,27 @@ input[type=text], input[type=password], input[type=passwordConform] {
 }
 
 /* Set a style for buttons login and signup */
-.signup {
-  background-color: #dd4f36;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+.buttons-long {
   width: 100%;
-  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  padding: 7px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 2px;
+  cursor: pointer;
+  border: 1px solid #181818;
+  border-radius: 2px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
-.signup:hover {
-  opacity: 0.8;
+.buttons-long:hover {
+  background-color: #181818;
+  color: whitesmoke;
 }
 
 .create-album-button {
@@ -365,6 +370,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
 
 .header-desc {
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   margin-top: 0.5rem;
 }
 
@@ -462,7 +468,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
 
 .grid-images img {
   max-width: 100%;
-  display: flex;
+  /* display: flex; */
   object-fit: cover;
   height: 350px;
   width: 350px;
@@ -611,6 +617,12 @@ input[type=text], input[type=password], input[type=passwordConform] {
   border-style: none;
   margin-bottom: 1rem;
 }
+
+.new-album {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
 /* End of albums page */
 
 /* Spec album page */
@@ -627,7 +639,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
 .likes {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1rem; 
+  margin-top: 0.5rem; 
 }
 
 .container-checkbox {
@@ -710,6 +722,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
 .send-review{
   display: flex;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 /* End of review page */
@@ -717,6 +730,53 @@ input[type=text], input[type=password], input[type=passwordConform] {
 /* Create a new album */
 
 /* End of create a new album */
+
+/* Buttons review page */
+.iLikeThis {
+  border: none;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  color: #a5a5a5;
+  cursor: pointer; 
+}
+
+.iDislikeThis {
+  border: none;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  color: #a5a5a5;
+  cursor: pointer; 
+}
+
+/* Keyframe this animation */
+.iLikeThis-active {
+  color: #dd4f36;
+  animation: pop 0.3s linear 1;
+}
+
+/* Keyframe this animation */
+.iDislikeThis-active {
+  color: #1d1d1d;
+  animation: pop 0.3s linear 1;
+}
+
+
+/* Keyframed */
+@keyframes pop{
+  50%  {transform: scale(1.2);}
+}
+
+/* End of buttons review page */ 
+
+/* Reviewed page albums */
+
+.reviewed-header {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* End of reviewed page albums */
 
 /* Media queries */
 
@@ -764,7 +824,7 @@ input[type=text], input[type=password], input[type=passwordConform] {
 
   .grid-images img {
     height: 350px;
-    width: 350px;
+    width: 100vw;
   }
 }
 

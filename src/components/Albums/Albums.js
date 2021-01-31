@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import One from "../../assets/1.jpg";
 import useAlbums from "../../hooks/useAlbums";
 
 const Albums = () => {
@@ -28,7 +27,7 @@ const Albums = () => {
           {albums.map((album) => (
             <div key={album.id}>
               <Link to={`album/${album.id}`}>
-                <img src={One} alt="Uploaded" />
+                <img src={album.cover} alt="Uploaded" />
               </Link>
               <label className="container-checkbox-albums">
                 <p className="album-title-header">{album.title}</p>

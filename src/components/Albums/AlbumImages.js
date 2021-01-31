@@ -1,4 +1,5 @@
 import React from "react";
+import { IoIosHeart, IoMdHeartDislike } from "react-icons/io";
 import { useAuth } from "../../contexts/AuthContext";
 
 const AlbumImages = ({ images, handleImagesArray, updateLikedImages }) => {
@@ -21,18 +22,18 @@ const AlbumImages = ({ images, handleImagesArray, updateLikedImages }) => {
                   <div className="checkmark"></div>
                 </label>
               ) : (
-                <div className="likes">
-                  <button
-                    className="iLikeThis"
-                    onClick={() => updateLikedImages(image, true)}
-                  >
-                    💛
-                  </button>
+                <div id={image.id} className="likes">
                   <button
                     className="iDislikeThis"
                     onClick={() => updateLikedImages(image, false)}
                   >
-                    🖤
+                    <IoMdHeartDislike className="heart-dislike" size="2em" />
+                  </button>
+                  <button
+                    className="iLikeThis"
+                    onClick={() => updateLikedImages(image, true)}
+                  >
+                    <IoIosHeart className="heart-like" size="2em" />
                   </button>
                 </div>
               )}

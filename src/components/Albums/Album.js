@@ -17,7 +17,7 @@ const Album = () => {
   const { images } = useImages(albumId);
   const { album, loading } = useAlbum(albumId);
   const { error, setError } = useState(false);
-  const [reviewLink, setReview] = useState(null);
+  const [reviewLink, setReviewLink] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [isCopied, setCopied] = useClipboard(reviewLink);
   const [title, setTitle] = useState("");
@@ -31,7 +31,7 @@ const Album = () => {
   const handleReviewLink = (album) => {
     let baseUrl = window.location.origin;
     let url = `${baseUrl}/review/${album}`;
-    setReview(url);
+    setReviewLink(url);
   };
 
   const handleAlbumName = (e) => {
@@ -41,12 +41,22 @@ const Album = () => {
   const handleNewAlbumFromImages = async (e) => {
     e.preventDefault();
 
+    if (title.length < 4) {
+      return;
+    }
+
+    if (title.length > 50) {
+      return;
+    }
+
     const createdAt = timestamp();
+
     try {
       const docReference = await db.collection("albums").add({
         title,
         createdAt,
         owner: currentUser.uid,
+        cover: album.cover,
       });
 
       await selectedImages.forEach((image) => {
@@ -58,6 +68,7 @@ const Album = () => {
             ),
           });
       });
+
       history.push(`/albums`);
     } catch (error) {
       setError(error.message);
@@ -113,19 +124,26 @@ const Album = () => {
       {changeTitle && (
         <form onSubmit={handleNewAlbumFromImages}>
           <div className="box-rename">
+            <p className="new-album">Select images and create new album</p>
             <input
               type="text"
               name="album"
-              placeholder="Album name"
               onChange={handleAlbumName}
               value={title}
               required
             />
 
             {error && <p className="error">{error}</p>}
+
             {title && title.length < 4 && (
               <p className="error">
                 Please enter a title at least 4 characters long.
+              </p>
+            )}
+
+            {title && title.length > 50 && (
+              <p className="error">
+                Please enter a title that are max 50 characters long.
               </p>
             )}
 

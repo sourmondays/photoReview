@@ -18,21 +18,29 @@ const EditAlbumName = () => {
     e.preventDefault();
     setError(null);
 
+    if (editRef.current.value.length < 4) {
+      return;
+    }
+
+    if (editRef.current.value.length > 50) {
+      return;
+    }
+
+    setError(false);
     try {
       await db.collection("albums").doc(albumId).update({
         title: editRef.current.value,
       });
 
       history.push(`/albums`);
-    } catch (e) {
-      setError(e.message);
+    } catch (error) {
+      setError(error.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="create-container">
-        {/* <img src={One} alt="" /> */}
         <div className="container-signup-login">
           <label htmlFor="album">
             <p className="header-desc">Edit album name</p>
@@ -46,13 +54,8 @@ const EditAlbumName = () => {
           />
 
           {error && <p className="error">{error}</p>}
-          {editRef && editRef.length < 4 && (
-            <p className="error">
-              Please enter a title at least 4 characters long.
-            </p>
-          )}
 
-          <button disabled={loading} className="signup" type="submit">
+          <button disabled={loading} className="buttons-long" type="submit">
             Edit album
           </button>
         </div>

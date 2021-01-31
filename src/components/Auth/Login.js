@@ -49,7 +49,7 @@ const Login = () => {
 
             {error && <p className="error">{error}</p>}
 
-            <button disabled={loading} className="signup" type="submit">
+            <button disabled={loading} className="buttons-long" type="submit">
               Login
             </button>
 
