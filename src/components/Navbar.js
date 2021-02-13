@@ -4,39 +4,19 @@ import { useAuth } from "../contexts/AuthContext";
 
 const NavBar = () => {
   const { logout, currentUser } = useAuth();
+
   let history = useHistory();
 
   const handleLogout = async () => {
     await logout();
     history.push("/");
-    window.location.reload();
   };
 
-  const refreshPageAlbums = () => {
-    history.push("/albums");
-    window.location.reload();
-  };
-
-  const refreshPageReviewed = () => {
-    history.push("/reviewed");
-    window.location.reload();
-  };
-
-  const refreshPageLogin = () => {
-    history.push("/login");
-    window.location.reload();
-  };
-
-  const refreshPageSignup = () => {
-    history.push("/signup");
-    window.location.reload();
-  };
   return (
     <>
       <div className="navbar-container">
         <div className="container">
           <nav>
-            <input type="checkbox" id="nav" className="hidden" />
             <label htmlFor="nav" className="nav-btn">
               <i></i>
               <i></i>
@@ -47,26 +27,26 @@ const NavBar = () => {
             <div className="nav-wrapper">
               <ul>
                 <li className="nav-item">
-                  <Link onClick={refreshPageAlbums}>Albums</Link>
+                  <Link to="/albums">Albums</Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link onClick={refreshPageReviewed}>Reviewed</Link>
+                  <Link to="/reviewed">Reviewed</Link>
                 </li>
 
                 {currentUser ? (
                   <li className="nav-item">
-                    <Link className="button-navbar" onClick={handleLogout}>
+                    <Link
+                      to="/"
+                      className="button-navbar"
+                      onClick={handleLogout}
+                    >
                       Log out
                     </Link>
                   </li>
                 ) : (
                   <li className="nav-item">
-                    <Link
-                      className="button-navbar"
-                      onClick={refreshPageLogin}
-                      to="/albums"
-                    >
+                    <Link className="button-navbar" to="/albums">
                       Login
                     </Link>
                   </li>
@@ -76,11 +56,7 @@ const NavBar = () => {
                   <p></p>
                 ) : (
                   <li className="nav-item">
-                    <Link
-                      className="button-navbar"
-                      onClick={refreshPageSignup}
-                      to="/signup"
-                    >
+                    <Link to="/signup" className="button-navbar">
                       Sign up
                     </Link>
                   </li>

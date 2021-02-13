@@ -5,6 +5,7 @@ import AlbumImages from "../Albums/AlbumImages";
 import useAlbum from "../../hooks/useAlbum";
 import firebase from "../../firebase/firebaseConfiq";
 import { db, timestamp } from "../../firebase/firebaseConfiq";
+import ImageLightbox from "../Lightbox/ImageLightbox";
 
 const Review = () => {
   const { albumId } = useParams();
@@ -14,6 +15,7 @@ const Review = () => {
   const [likedImage, setLikedImage] = useState([]);
   const [reviewImage, setReviewImage] = useState([]);
   const { album, loading } = useAlbum(albumId);
+  const [selectedImgLightbox, setSelectedImgLightbox] = useState(null);
   const history = useHistory();
 
   useEffect(() => {
@@ -124,8 +126,15 @@ const Review = () => {
         <AlbumImages
           images={images}
           updateLikedImages={updateLikedImages}
+          setSelectedImgLightbox={setSelectedImgLightbox}
           key={images.id}
         />
+        {selectedImgLightbox && (
+          <ImageLightbox
+            selectedImgLightbox={selectedImgLightbox}
+            setSelectedImgLightbox={setSelectedImgLightbox}
+          />
+        )}
       </div>
 
       <h3 className="review-count">

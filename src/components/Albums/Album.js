@@ -10,6 +10,7 @@ import { db, timestamp } from "../../firebase/firebaseConfiq";
 import firebase from "../../firebase/firebaseConfiq";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import ImageLightbox from "../Lightbox/ImageLightbox";
 
 const Album = () => {
   const { currentUser } = useAuth();
@@ -22,6 +23,7 @@ const Album = () => {
   const [isCopied, setCopied] = useClipboard(reviewLink);
   const [title, setTitle] = useState("");
   const [changeTitle, setChangeTitle] = useState(false);
+  const [selectedImgLightbox, setSelectedImgLightbox] = useState(null);
   const history = useHistory();
 
   if (loading) {
@@ -171,7 +173,17 @@ const Album = () => {
         )}
       </div>
 
-      <AlbumImages images={images} handleImagesArray={handleImagesArray} />
+      <AlbumImages
+        setSelectedImgLightbox={setSelectedImgLightbox}
+        images={images}
+        handleImagesArray={handleImagesArray}
+      />
+      {selectedImgLightbox && (
+        <ImageLightbox
+          selectedImgLightbox={selectedImgLightbox}
+          setSelectedImgLightbox={setSelectedImgLightbox}
+        />
+      )}
     </div>
   );
 };

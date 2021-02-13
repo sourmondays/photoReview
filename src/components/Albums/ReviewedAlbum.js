@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useReviewedImages from "../../hooks/useReviewedImages";
 import useSpecReviewed from "../../hooks/useSpecReviewed";
 import useClipboard from "react-use-clipboard";
+import ImageLightbox from "../Lightbox/ImageLightbox";
 
 const ReviewedAlbum = () => {
   const { albumId } = useParams();
@@ -12,6 +13,7 @@ const ReviewedAlbum = () => {
   const [reviewLink, setReviewLink] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [isCopied, setCopied] = useClipboard(reviewLink);
+  const [selectedImgLightbox, setSelectedImgLightbox] = useState(null);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -62,7 +64,17 @@ const ReviewedAlbum = () => {
         )}
       </div>
 
-      <ReviewedImages images={images} handleImagesArray={handleImagesArray} />
+      <ReviewedImages
+        setSelectedImgLightbox={setSelectedImgLightbox}
+        images={images}
+        handleImagesArray={handleImagesArray}
+      />
+      {selectedImgLightbox && (
+        <ImageLightbox
+          selectedImgLightbox={selectedImgLightbox}
+          setSelectedImgLightbox={setSelectedImgLightbox}
+        />
+      )}
     </div>
   );
 };

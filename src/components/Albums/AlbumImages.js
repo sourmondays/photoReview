@@ -2,7 +2,12 @@ import React from "react";
 import { IoIosHeart, IoMdHeartDislike } from "react-icons/io";
 import { useAuth } from "../../contexts/AuthContext";
 
-const AlbumImages = ({ images, handleImagesArray, updateLikedImages }) => {
+const AlbumImages = ({
+  images,
+  handleImagesArray,
+  updateLikedImages,
+  setSelectedImgLightbox,
+}) => {
   const { currentUser } = useAuth();
 
   return (
@@ -11,7 +16,11 @@ const AlbumImages = ({ images, handleImagesArray, updateLikedImages }) => {
         {images &&
           images.map((image) => (
             <div key={image.id}>
-              <img src={image.url} alt="Uploaded" />
+              <img
+                src={image.url}
+                onClick={() => setSelectedImgLightbox(image.url)}
+                alt="Uploaded"
+              />
               {currentUser ? (
                 <label className="container-checkbox">
                   <input
